@@ -1,0 +1,71 @@
+/* Custom CSS */
+/* Custom CSS for the navigation bar */
+
+.navbar {
+
+    position: fixed; /* Fix the navbar at the top */
+    top: 0; /* Align to the top */
+    right: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it stays above other elements */
+   
+}
+
+
+/* Add some padding at the top of the body content to avoid overlap */
+body {
+    padding-top: 70px;  /* Adjust based on your navbar height */
+    font-family: Arial, sans-serif;
+    background-image: url("images/background.jpg"); /* Specify the background image */
+    background-size: cover; /* Cover the entire viewport */
+    background-repeat: no-repeat; /* Prevent tiling */
+    background-attachment: fixed; /* Keep the background fixed when scrolling */
+    background-position: center; /* Center the image */
+    color: white; /* Ensure text is visible */
+}
+
+.hero-section, #skills {
+    background: transparent; /* Remove any background from hero-section and skills section */
+    color: white; /* Ensure text color contrast */
+}
+
+
+#skills {
+    
+    color: white;
+}
+
+h1, h2, h3 {
+    color: white;
+}
+h5{
+    color: black;
+}
+/* Project Card Styling */
+.card {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  /* Adds a slight shadow */
+    
+}
+.card-text{
+color: black;
+}
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Carousel Image Size Adjustment */
+.carousel-inner img {
+    max-width: 35%; /* Adjust the width as needed */
+    height: 150px;   /* Maintain aspect ratio */
+    margin: 0 auto; /* Center the image */
+}
+
+/* Optional: Centering the carousel itself */
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstab.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About Me</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h1 class="text-center mb-4">Contact Me</h1>
+            <form id="contactForm" style="color: white;">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                    <div class="error-message" id="nameError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Enter your message" required></textarea>
+                    <div class="error-message" id="messageError"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- Bootstrap and jQuery -->
+    <script src="jquery.min.js"></script>
+    <script src="bootstrab.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Validate name
+            $('#name').on('input', function() {
+                const name = $(this).val();
+                if (name.trim() === '') {
+                    $('#nameError').text('Name is required.');
+                } else {
+                    $('#nameError').text('');
+                }
+            });
+
+            // Validate email
+            $('#email').on('input', function() {
+                const email = $(this).val();
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (email.trim() === '') {
+                    $('#emailError').text('Email is required.');
+                } else if (!emailPattern.test(email)) {
+                    $('#emailError').text('Enter a valid email address.');
+                } else {
+                    $('#emailError').text('');
+                }
+            });
+
+            // Validate message
+            $('#message').on('input', function() {
+                const message = $(this).val();
+                if (message.trim() === '') {
+                    $('#messageError').text('Message is required.');
+                } else {
+                    $('#messageError').text('');
+                }
+            });
+
+            // Form submission
+            $('#contactForm').on('submit', function(e) {
+                e.preventDefault(); // Prevent default form submission
+
+                // Final validation before submission
+                const isNameValid = $('#name').val().trim() !== '';
+                const isEmailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test($('#email').val().trim());
+                const isMessageValid = $('#message').val().trim() !== '';
+
+                if (isNameValid && isEmailValid && isMessageValid) {
+                    // Here, you can add your form submission logic (e.g., AJAX call)
+                    alert('Message sent successfully!'); // Placeholder for actual submission
+                    $('#contactForm')[0].reset(); // Reset form
+                }
+            });
+        });
+    </script>
+</body>
+</html>
